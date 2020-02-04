@@ -6,10 +6,21 @@
 </head>
 <body>
   <script>
-    for(i=0;i<1;i++){
-    console.log(roundPlay(playerChoice(), computerChoice()));
-    }
+     let playerWinCount = 0;
+      let computerWinCount = 0;
+
+    game();  
     
+    
+    function game(){
+     
+
+        for(i=0;i<5;i++){
+          console.log(roundPlay(playerChoice(), computerChoice()));
+        }
+        alert(`You won ${playerWinCount} 
+          times and the computer won ${computerWinCount} times. Thanks for playing!`)
+    }
 
     function roundPlay(playerHand, computerHand){
       let winLoss;
@@ -32,6 +43,7 @@
           winLoss = `win`;
           winner = playerHand;
           loser = computerHand;
+          playerWinCount++;
           break;
         } 
         case -1:
@@ -39,6 +51,7 @@
           winLoss = `lose`;
           winner = computerHand;
           loser = playerHand;
+          computerWinCount++;
           break;
         }
       }
