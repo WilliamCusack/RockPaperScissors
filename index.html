@@ -6,7 +6,7 @@
 </head>
 <body>
   <script>
-    for(i=0;i<100;i++){
+    for(i=0;i<1;i++){
     console.log(roundPlay(playerChoice(), computerChoice()));
     }
     
@@ -43,8 +43,9 @@
         }
       }
 
-      return(`You ${winLoss}! ${winner} ${beatTie} ${loser}!`);
-
+      let finished =(`You ${winLoss}! ${winner} ${beatTie} ${loser}!`);
+      prompt(finished);
+      return finished;
       
     }
 
