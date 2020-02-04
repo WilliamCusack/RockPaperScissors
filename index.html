@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    for(i=0;i<100;i++){
+    console.log(roundPlay(playerChoice(), computerChoice()));
+    }
+    
+
+    function roundPlay(playerHand, computerHand){
+      let winLoss;
+      let beatTie = `beats`;
+      let player = handConverter(playerHand);
+      let computer = handConverter(computerHand);
+      let winner; //computer or player
+      let loser;
+
+      switch (player - computer){
+        case 0: 
+        {winLoss = `TIE` 
+        beatTie = `TIE`
+        winner = playerHand;
+        loser = computerHand;
+        }
+        break;
+        case 1:
+        case -2:{
+          winLoss = `win`;
+          winner = playerHand;
+          loser = computerHand;
+          break;
+        } 
+        case -1:
+        case  2:{
+          winLoss = `lose`;
+          winner = computerHand;
+          loser = playerHand;
+          break;
+        }
+      }
+
+      return(`You ${winLoss}! ${winner} ${beatTie} ${loser}!`);
+
+      
+    }
+
+    function computerChoice(){
+      let computerPick = Math.floor(Math.random()*3) + 1;
+      switch (computerPick){
+        case 1: return `rock`; //rock
+        case 2: return `paper`; //paper
+        case 3: return `scissors`; //scissors
+      }
+    }
+
+    function playerChoice(){
+        let playerPick = prompt(`Please pick 'Rock', 
+          'Paper', or 'Scissors'!`,`Rock, Paper, or Scissors`);
+        textCheck = /^\b(rock|paper|scissors)\b$/i;
+
+        if(textCheck.test(playerPick)){
+          return playerPick.toLowerCase();
+        }
+        else{
+          console.log(`WRONG`);
+          playerChoice();
+        }
+        
+    }
+
+    function handConverter(handForm){
+      return (handForm === `rock`) ? 1
+                :(handForm === `paper`) ? 2
+                :(handForm === `scissors`) ? 3
+                :`error not right`;
+    }
+
+  </script>
+</body>
+</html>
